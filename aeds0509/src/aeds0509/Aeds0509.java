@@ -36,12 +36,13 @@ public class Aeds0509 {
             for(int i = 0; i < lista.length; i++){
                 if(nome.equals(lista[i])){
                     System.out.println("Convidado."); 
-                }else 
-                    for( i = 0; i < lista2.length; i++){
+                }else{ 
+//                    for( i = 0; i < lista2.length; i++){
                         
-                    }
+                    //}
             }
         }
     }
     
+    }
 }
