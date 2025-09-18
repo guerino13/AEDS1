@@ -1,5 +1,7 @@
 package aula1809;
 
+import java.util.Scanner;
+
 public class Aula1809 {
 
     public static boolean insere(String v[], String elemento, int ultimo){
@@ -21,6 +23,7 @@ public class Aula1809 {
                                             String elemento, int ultimo){ 
         for(int i=0; i < ultimo; i++){
               if (lista[i].equalsIgnoreCase(elemento)){
+                  System.out.println("Posicao na lista: "+ i);
                   return lista[i];
               }
         }
@@ -42,8 +45,41 @@ public class Aula1809 {
         
     }
     
+    public static String excluirUltimo(String lista[], int last){
+        if (last == 0) {
+            System.out.println("Lista vazia");
+            return null;
+        }
+        String ultimo = lista[2];
+        for (int i = 0; i == last; i++) {
+             lista[i] = lista[i - 1];
+//lista[i] = null;
+        }
+       
+       return ultimo;
+        
+    }
+    
+    public static String excluir(String lista[], int ind, int ultimo) {
+       
+       
+
+        if (ind >= ultimo) {
+            System.out.println("Lista vazia ou posicao invalida");
+            return null;
+        }
+        String elemento = lista[ind];
+        
+         for (int i = ind; i < (ultimo - 1); i++){
+             lista[i] = lista[i+1];
+         }
+        
+        return elemento;
+    }
+    
     public static void main(String[] args) {
         //String v[] = new String[5]; // 0,1,2,3,4
+        Scanner sc = new Scanner(System.in);
         String v[] = new String[10]; //{"Fulano da Silva", "Beltrano Amaro", "Sicrano F."}; 
         int contaPessoas = 0;
         boolean ok = insere(v, "Jose de Alencar", contaPessoas);
@@ -61,38 +97,40 @@ public class Aula1809 {
         
         System.out.println("\nLista de convidados");
         imprimir(v, contaPessoas);
+        pesquisar(v, "Guimaraes Rosa", contaPessoas);
         
-        String primeiroDaLista = excluirPrimeiro(v, contaPessoas);
-        if(primeiroDaLista != null){
-            System.out.println("\nExcluido: " + primeiroDaLista);
+        System.out.println("Informe o indice do convidado que voce quer excluir: ");
+        int x = sc.nextInt();
+        String excluido = excluir(v, x, contaPessoas);
+        if(excluido != null){
+            System.out.println("\nExcluido: " + excluido);
             contaPessoas--;
         } else {
             System.out.println("\nLista vazia");
         }
-      
         System.out.println("\nLista de convidados");
         imprimir(v, contaPessoas);
-        
-//        Scanner in = new Scanner(System.in);
-//        System.out.print("Dê o nome: ");
-//        String convidado = in.nextLine();
-//        boolean inseriu = insere(v, convidado, contaPessoas);
-//        if(inseriu){
-//            contaPessoas++;
-//        }else{
-//            System.out.println("Lista cheia!");
+//        String primeiroDaLista = excluirPrimeiro(v, contaPessoas);
+//        if(primeiroDaLista != null){
+//            System.out.println("\nExcluido: " + primeiroDaLista);
+//            contaPessoas--;
+//        } else {
+//            System.out.println("\nLista vazia");
 //        }
-//
-//        System.out.print("Dê o nome: ");
-//        convidado = in.nextLine();
-//        inseriu = insere(v, convidado, contaPessoas);
-//        if(inseriu){
-//            contaPessoas++;
-//        }else{
-//            System.out.println("Lista cheia!");
+//      
+//        System.out.println("\nLista de convidados");
+//        imprimir(v, contaPessoas);
+//        String ultimoDaLista = excluirUltimo(v, contaPessoas);
+//        if(ultimoDaLista != null){
+//            System.out.println("\nExcluido: " + ultimoDaLista);
+//            contaPessoas--;
+//        } else {
+//            System.out.println("\nLista vazia");
 //        }
-        
-      
+//      
+//        System.out.println("\nLista de convidados");
+//        imprimir(v, contaPessoas);
+
     }
     
     
